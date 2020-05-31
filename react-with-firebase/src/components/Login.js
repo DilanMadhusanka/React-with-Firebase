@@ -1,4 +1,5 @@
 import React from 'react';
+import fire from '../config/fire';
 
 class Login extends React.Component {
 
@@ -10,11 +11,21 @@ class Login extends React.Component {
         }
     }
 
+    login(e) {
+        e.preventDefault();
+        fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(u => {
+            console.log(u);
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+
     render() {
         return (
             <div>
                 <form>
                     <input
+                        name="email"
                         type="email"
                         id="email"
                         placeholder="enter email address"
@@ -22,9 +33,11 @@ class Login extends React.Component {
                         value={this.state.email}
                     />
                     <input
+                        name="password"
                         type="password"
                         id="password"
                         placeholder="enter password"
+                        onChange={this.handleChange}
                         value={this.state.password}
                     />
                     <button onClick={this.login}>Login</button>
