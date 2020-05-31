@@ -5,6 +5,10 @@ class Login extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.login = this.login.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+
         this.state = {
             email: "",
             password: ""
@@ -17,6 +21,12 @@ class Login extends React.Component {
             console.log(u);
         }).catch(err => {
             console.log(err);
+        });
+    }
+
+    handleChange(e) {
+        this.setState({
+            [e.target.name]: e.target.value
         });
     }
 
