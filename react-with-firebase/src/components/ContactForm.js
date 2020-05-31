@@ -1,6 +1,7 @@
+import React from 'react';
 const ContactForm = () => {
     return (
-        <div></div>
+        <div>display form</div>
     );
 }
 
