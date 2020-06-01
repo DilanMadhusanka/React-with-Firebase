@@ -5,6 +5,16 @@ import firebase from '../config/fire'
 const firebaseDb = firebase.database().ref();
 
 const Contacts = () => {
+
+    const addOrEdit = obj => {
+        firebaseDb.child('contacts').push(
+            obj,
+            err => {
+                console.log(err)
+            }
+        )
+    }
+
     return (
         <>
             <div className="jumbotron jumbotron-fluid">
