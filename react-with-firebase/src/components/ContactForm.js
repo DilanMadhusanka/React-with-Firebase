@@ -19,8 +19,13 @@ const ContactForm = (props) => {
         })
     }
 
+    const handleFormSubmit = e => {
+        e.preventDefault();
+        props.addOrEdit(values)
+    }
+
     return (
-        <form autoComplete="off">
+        <form autoComplete="off" onSubmit={handleFormSubmit}>
             <div className="form-group input-group">
                 <div className="input-group-prepend">
                     <div className="input-group-text">
