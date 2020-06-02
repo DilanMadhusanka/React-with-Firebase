@@ -11,13 +11,10 @@ class Home extends React.Component {
     render() {
         return (
             <div className="row">
-
                 <div className="col-md-8 offset-md-2">
                     <Contacts/>
+                    <button onClick={this.logout}>Logout</button>
                 </div>
-
-                {/* <h1>You are logged in !!!</h1>
-                <button onClick={this.logout}>Logout</button> */}
             </div>
         )
     }
