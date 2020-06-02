@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ContactForm = (props) => {
 
@@ -10,6 +10,18 @@ const ContactForm = (props) => {
     }
 
     var [values, setValues] = useState(initialFieldValues)
+
+    useEffect(() => {
+        if (props.currentId === '') {
+            setValues({
+                ...initialFieldValues
+            })
+        } else {
+            setValues({
+                ...props.contactObjects[props.currentId]
+            })
+        }
+    }, [props.currentId, props.contactObjects])
 
     const handleInputChange = e => {
         var { name, value } = e.target
@@ -56,7 +68,7 @@ const ContactForm = (props) => {
                 <textarea className="form-control" placeholder="Address" name="address" value={values.address} onChange={handleInputChange} />
             </div>
             <div className="form-group">
-                <input type="submit" value="Save" className="btn btn-primary btn-block" />
+                <input type="submit" value={props.currentId === '' ? "Save" : "Update"} className="btn btn-primary btn-block" />
             </div>
         </form>
     );
