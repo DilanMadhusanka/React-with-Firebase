@@ -42,6 +42,19 @@ const Contacts = () => {
             )
     }
 
+    const onDelete = key => {
+        if (window.confirm('Are you sure to delete this record?')) {
+            firebaseDb.child(`contacts/${key}`).remove(
+                err => {
+                    if (err)
+                        console.log(err)
+                    else
+                        setCurrentId('')
+                }
+            )
+        }
+    }
+
     return (
         <>
             <div className="jumbotron jumbotron-fluid">
@@ -74,7 +87,7 @@ const Contacts = () => {
                                             <a className="btn text-primary" onClick={() => { setCurrentId(id) }}>
                                                 <i className="fas fa-pencil-alt"></i>
                                             </a>
-                                            <a className="btn text-danger">
+                                            <a className="btn text-danger" onClick={() => onDelete(id)}>
                                                 <i className="fas fa-trash-alt"></i>
                                             </a>
                                         </td>
