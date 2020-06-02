@@ -7,6 +7,7 @@ const firebaseDb = firebase.database().ref();
 const Contacts = () => {
 
     var [contactObjects, setContactObjects] = useState({})
+    var [currentId, setCurrentId] = useState('')
 
     useEffect(() => {
         firebaseDb.child('contacts').on('value', snapshot => {
@@ -36,7 +37,7 @@ const Contacts = () => {
             </div>
             <div className="row">
                 <div className="col-md-5">
-                    <ContactForm addOrEdit={addOrEdit} />
+                    <ContactForm {...{ addOrEdit, currentId, contactObjects }} />
                 </div>
                 <div className="col-md-7">
                     <table className="table table-borderless table-stripped">
@@ -55,7 +56,14 @@ const Contacts = () => {
                                         <td>{contactObjects[id].fullName}</td>
                                         <td>{contactObjects[id].mobile}</td>
                                         <td>{contactObjects[id].email}</td>
-                                        <td></td>
+                                        <td>
+                                            <a className="btn text-primary" onClick={() => { setCurrentId(id) }}>
+                                                <i className="fas fa-pencil-alt"></i>
+                                            </a>
+                                            <a className="btn text-danger">
+                                                <i className="fas fa-trash-alt"></i>
+                                            </a>
+                                        </td>
                                     </tr>
                                 })
                             }
