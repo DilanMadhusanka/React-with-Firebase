@@ -84,12 +84,12 @@ const Contacts = () => {
                                         <td>{contactObjects[id].mobile}</td>
                                         <td>{contactObjects[id].email}</td>
                                         <td>
-                                            <a className="btn text-primary" onClick={() => { setCurrentId(id) }}>
+                                            <div className="btn text-primary" onClick={() => { setCurrentId(id) }}>
                                                 <i className="fas fa-pencil-alt"></i>
-                                            </a>
-                                            <a className="btn text-danger" onClick={() => onDelete(id)}>
+                                            </div>
+                                            <div className="btn text-danger" onClick={() => onDelete(id)}>
                                                 <i className="fas fa-trash-alt"></i>
-                                            </a>
+                                            </div>
                                         </td>
                                     </tr>
                                 })
