@@ -13,7 +13,7 @@ class Home extends React.Component {
             <div className="row">
                 <div className="col-md-8 offset-md-2">
                     <Contacts/>
-                    <button onClick={this.logout}>Logout</button>
+                    <button className="btn btn-danger" onClick={this.logout}>Logout</button>
                 </div>
             </div>
         )
