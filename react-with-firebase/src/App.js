@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import fire from './config/fire';
 
 import Login from './components/Login'
