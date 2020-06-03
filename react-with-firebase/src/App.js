@@ -30,7 +30,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         {this.state.user ? <Home/> : <Login/>}
       </div>
     )
